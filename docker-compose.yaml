@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: colloc-postgres
+    environment:
+      POSTGRES_DB: collochub
+      POSTGRES_USER: devmustroc
+      POSTGRES_PASSWORD: '@Isaac2021'
+    ports:
+      - "5432:5432"

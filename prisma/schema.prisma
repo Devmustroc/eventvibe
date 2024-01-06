@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String        @id @default(uuid())
+  name           String?
+  email          String        @unique
+  emailVerified  DateTime?
+  age            Int?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  user_type      String?
+  favoriteIds    String[]      @default([])
+  listing        Listing[]
+  reservation    Reservation[]
+  Account        Account[]
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Listing {
+  id            String   @id @default(uuid())
+  title         String
+  imageSrc      String
+  createdAt     DateTime @default(now())
+  category      String
+  userId        String
+  description   String
+  startDate     DateTime
+  endDate       DateTime
+  price         Int
+  rating        Int?     @default(0)
+  guestCount    Int
+  locationValue String
+  remaingPlaces Int
+  address       String
+  zipcode       String
+  city          String
+
+  reservation Reservation[]
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Reservation {
+  id         String   @id @default(uuid())
+  listingId  String
+  userId     String
+  startDate  DateTime
+  endDate    DateTime
+  numGuests  Int
+  totalPrice Int
+  createdAt  DateTime @default(now())
+
+  listing Listing @relation(fields: [listingId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@unique([listingId, userId])
+}

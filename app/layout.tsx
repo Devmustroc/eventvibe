@@ -1,0 +1,65 @@
+import type { Metadata } from 'next'
+import {Nunito} from 'next/font/google'
+import './globals.css'
+import {NavBar} from "@/app/components/navbar/NavBar";
+import RegisterModal from "@/app/components/modals/RegisterModal";
+import React from "react";
+import ToasterProvider from "@/app/providers/ToasterProvider";
+import LoginModal from "@/app/components/modals/LoginModal";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import {RentModal} from "@/app/components/modals/RentModal";
+import ClientOnly from "@/app/components/ClientOnly";
+import {SearchModal} from "@/app/components/modals/SearchModal";
+import {Footer} from "@/app/components/Footer/Footer";
+import UpdateModal from "@/app/components/modals/UpdateModal";
+
+
+
+const font1 = Nunito({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Event Vibe',
+  description: 'Event Vibe is a platform for event organizers to create and manage events.',
+}
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+    const currentUser = await getCurrentUser();
+
+
+    return (
+    <html lang="en">
+    <body className={font1.className}>
+    <ClientOnly>
+        <ToasterProvider/>
+        <LoginModal/>
+        <RegisterModal/>
+        <UpdateModal />
+        <SearchModal/>
+        <RentModal/>
+    </ClientOnly>
+    <NavBar currentUser={currentUser}/>
+    <div>
+        {children}
+    </div>
+    <div>
+        <hr
+            className="
+                border-[1px]
+                border-[#e4e4e4]
+                w-[100%]
+                my-[20px]
+                md:my-[20px]
+            "
+        />
+        <ClientOnly>
+            <Footer/>
+        </ClientOnly>
+    </div>
+    </body>
+    </html>
+    )
+}
