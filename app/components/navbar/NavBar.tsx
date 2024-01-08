@@ -59,7 +59,6 @@ export const NavBar: React.FC<NavBarProps> =  ({
                             w-full
                             justify-between
                             md:justify-between
-                            bg-[#f1f0f2]
                             gap-4
                             md:gap-4
                             xs:gap-1
