@@ -4,7 +4,7 @@ import {SafeReservation, SafeUser} from "@/app/types";
 import {Container} from "@/app/components/Container";
 import Heading from "@/app/components/Heading";
 import {useRouter} from "next/navigation";
-import React, {useCallback, useState, useEffect} from "react";
+import React, {useCallback, useState} from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {EventCard} from "@/app/components/events/EventCard";
