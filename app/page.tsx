@@ -30,7 +30,8 @@ const Home = async ({
 
     if (events.length === 0) {
         return (
-            <ClientOnly>
+            <ClientOnly
+            >
                 <HeroVideo
                     currentUser={currentUser}
                 />
@@ -58,13 +59,13 @@ const Home = async ({
             />
             <div
                 className="
-                                    pb-[100px]
+                                    pb-[50px]
             "
             >
                 <div
                     className="
-                                   pb-[80px]
-                                  "
+                        pb[20px]
+                    "
                 >
                     <Categories/>
                 </div>
@@ -80,6 +81,7 @@ const Home = async ({
                                     w-full
                                     mb-10
                                     gap-2
+                                    pt-[30px]
                                   "
                             >
                                 <Image

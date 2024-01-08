@@ -108,7 +108,6 @@ const ProfileClient: React.FC<ProfileClientProps> = ({
                       xl:w-[40%]
                       2xl:w-[40%]
                       border-2
-                      border-gray-200
                       shadow-md
                       "
            >
@@ -137,8 +136,7 @@ const ProfileClient: React.FC<ProfileClientProps> = ({
                        >
                            <ImageUpload
                                value={image}
-                               onChange={(value: any) => setCustomValue('imageSrc', value)}
-                               avatar
+                               onChange={(value) => setCustomValue('image', value)}
                            />
                        </div>
                        <div className="p-5">

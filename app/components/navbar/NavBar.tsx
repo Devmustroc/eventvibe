@@ -37,8 +37,8 @@ export const NavBar: React.FC<NavBarProps> =  ({
             className={`
                 fixed
                 w-full
-                ${isScrolled ? 'bg-white' : 'bg-transparent'}
-                z-10
+                ${isScrolled ? 'bg-[#f1f0f2]' : 'bg-transparent'}
+                z-50
                 `}
         >
             <div
@@ -59,6 +59,7 @@ export const NavBar: React.FC<NavBarProps> =  ({
                             w-full
                             justify-between
                             md:justify-between
+                            bg-[#f1f0f2]
                             gap-4
                             md:gap-4
                             xs:gap-1

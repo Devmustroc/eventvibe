@@ -43,18 +43,17 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
                         flex
                         justify-center
                         items-center
-                        p-[50px]
-                    "
+                        pt-[100px]
+                        pb-[100px]
+                        bg-brand_whitea
+                       "
 
             >
             <div
                 className="
                         grid
                         grid-cols-1
-                        gap-4
-                        border-b-[1px]
-                        rounded-b-3xl
-                        shadow-blue-500
+
                 "
             >
                 <Wrapper>
@@ -62,17 +61,19 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
                         className="
                         grid
                         grid-cols-1
-                        gap-[50px]
                         items-center
                         md:grid-cols-2
+                        px-[50px]
+                        py-[50px]
+                        shadowHero
                     "
                     >
                         <div>
                             <Image
                                 src={`/icons/${categoryValue}.jpg`}
                                 alt="hero"
-                                width={500}
-                                height={500}
+                                width={300}
+                                height={300}
                             />
                         </div>
                         <div
@@ -81,7 +82,6 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
                             flex-col
                             justify-start
                             items-star
-                            gap-4
                             py-4
                             px-4
                         "

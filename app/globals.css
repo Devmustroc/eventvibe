@@ -6,6 +6,7 @@ html,
 body,
 :root {
   height: 100%;
+  background-color: #f1f0f2;
   scrollbar-width: auto;
   scrollbar-color: #4a5568 #f7fafc;
 }
@@ -70,6 +71,7 @@ body::-webkit-scrollbar-thumb {
   .h1-bold {
     @apply font-bold text-[40px] leading-[48px] lg:text-[48px] lg:leading-[60px]  xl:text-[58px] xl:leading-[74px];
   }
+
 
   /* 40 */
   .h2-bold {
@@ -217,4 +219,11 @@ body::-webkit-scrollbar-thumb {
   .animate-gradient-x {
     animation: gradient-x 20s linear infinite;
   }
+}
+
+.shadowHero {
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow:  5px 5px 33px #c9c9c9,
+  -5px -5px 33px #ffffff;
 }

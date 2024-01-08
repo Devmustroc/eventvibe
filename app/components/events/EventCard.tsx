@@ -83,7 +83,7 @@ export const EventCard: React.FC<EventCardProps> = ({
                 group
                 transition
                 cursor-pointer
-                shadow-[20px_20px_60px_#bdcbc4]
+                shadowHero
                 duration-200
                 ease-in-out
                 hover:shadow-md

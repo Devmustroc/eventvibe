@@ -22,268 +22,56 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
             onChange(result.info.secure_url);
         }, [onChange])
 
-        if (avatar) {
-            return (
-                <CldUploadWidget
-                    onUpload={handleUpload}
-                    uploadPreset='ofmkag8f'
-                    options={{
-                        maxFiles: 1,
-                    }}
-                >
-                    {({ open }) => {
-                        return (
-                            {avatar} ? (
-                                <div
-                                    onClick={() => open?.()}
-                                    className="
-                                    relative
-                                    cursor-pointer
-                                    h-[150px]
-                                    w-[150px]
-                                    hover:opacity-80
-                                    transition
-                                    border-dashed
-                                    rounded-full
-                                    border-2
-                                    border-gray-300
-                                    flex
-                                    flex-col
-                                    justify-center
-                                    items-center
-                                    gap-4
-                                    text-brand_secondary
-                        "
-                                >
-                                    <TbPhotoPlus
-                                        size={40}
-                                        className="
-                                        hover:opacity-80
-                                        hover:translate-y-[-2px]
-                            "
-                                    />
-                                    <div
-                                        className="
-                                            text-sm
-                                            transition
-                                            hover:opacity-80
-                                        "
-                                    >
-                                        Upload
-                                    </div>
-                                    {
-                                        value && (
-                                            <div
-                                                className="
-                                                absolute
-                                                w-full
-                                                h-full
-                                                rounded-full
-                                         "
-                                            >
-                                                <Image
-                                                    alt="Uploaded image"
-                                                    objectFit={'cover'}
-                                                    fill
-                                                    src={value}
-                                                    className="rounded-full"
-                                                />
-                                            </div>
-                                        )
-                                    }
-                                </div>
-                            ): (
-                                <div
-                                    onClick={() => open?.()}
-                                    className="
-                                    relative
-                                    cursor-pointer
-                                    hover:opacity-80
-                                    transition
-                                    border-dashed
-                                    rounded-full
-                                    rouded-full
-                                    border-2
-                                    flex
-                                    flex-col
-                                    justify-center
-                                    items-center
-                        "
-                                >
-                                    <TbPhotoPlus
-                                        size={40}
-                                        className="
-                                            hover:opacity-80
-                                            hover:translate-y-[-2px]
-                                        "
-                                    />
-                                    <div
-                                        className="
-                                            text-sm
-                                            transition
-                                            hover:opacity-80
-                                        "
-                                    >
-                                        Click to upload
-                                    </div>
-                                    {
-                                        value && (
-                                            <div
-                                                className="
-                                                    absolute
-                                                    top-0
-                                                    left-0
-                                                    w-full
-                                                    h-full
-                                                    rounded-full
-                                                    overflow-x-auto
-                                                "
-                                            >
-                                                <Image
-                                                    alt="Uploaded image"
-                                                    fill
-                                                    style={{objectFit: 'cover'}}
-                                                    src={value}
-                                                />
-                                            </div>
-                                        )
-                                    }
-                                </div>
-                            )
-                        )
-                    }}
-                </CldUploadWidget>
-            )
-        }
 
         return (
-        <CldUploadWidget
-            onUpload={handleUpload}
-            uploadPreset='ofmkag8f'
-            options={{
-                maxFiles: 1,
-            }}
-        >
-            {({ open }) => {
-                return (
-                    {avatar} ? (
+            <CldUploadWidget
+                onUpload={handleUpload}
+                uploadPreset="ofmkag8f"
+                options={{
+                    maxFiles: 1
+                }}
+            >
+                {({ open }) => {
+                    return (
                         <div
                             onClick={() => open?.()}
                             className="
-                                    relative
-                                    cursor-pointer
-                                    h-[500px]
-                                    hover:opacity-80
-                                    transition
-                                    border-dashed
-                                    border-2
-                                    border-gray-300
-                                    flex
-                                    flex-col
-                                    justify-center
-                                    items-center
-                                    gap-4
-                                    text-brand_secondary
-                        "
+                                          relative
+                                          cursor-pointer
+                                          hover:opacity-70
+                                          transition
+                                          border-dashed
+                                          border-2
+                                          p-20
+                                          border-neutral-300
+                                          flex
+                                          flex-col
+                                          justify-center
+                                          items-center
+                                          gap-4
+                                          text-neutral-600
+                                        "
                         >
                             <TbPhotoPlus
-                                size={40}
-                                className="
-                                hover:opacity-80
-                                hover:translate-y-[-2px]
-                            "
+                                size={50}
                             />
-                            <div
-                                className="
-                                text-sm
-                                transition
-                                hover:opacity-80
-                            "
-                            >
-                               Upload
-                            </div>
-                            {
-                                value && (
-                                    <div
-                                        className="
-                                                absolute
-                                                w-full
-                                                h-full
-                                                rounded-lg
-                                         "
-                                    >
-                                        <Image
-                                            alt="Uploaded image"
-                                            objectFit={'cover'}
-                                            fill
-                                            src={value}
-                                        />
-                                    </div>
-                                )
-                            }
-                        </div>
-                    ): (
-                        <div
-                            onClick={() => open?.()}
-                            className="
-                                    relative
-                                    cursor-pointer
-                                    hover:opacity-80
-                                    transition
-                                    border-dashed
-                                    rouded-full
-                                    w-[100px]
-                                    h-[100px]
-                                    rounded-lg
-                                    border-2
-                                    flex
-                                    flex-col
-                                    justify-center
-                                    items-center
-                        "
-                        >
-                            <TbPhotoPlus
-                                size={40}
-                                className="
-                                hover:opacity-80
-                                hover:translate-y-[-2px]
-                            "
-                            />
-                            <div
-                                className="
-                                text-sm
-                                transition
-                                hover:opacity-80
-                            "
-                            >
+                            <div className="font-semibold text-lg">
                                 Click to upload
                             </div>
-                            {
-                                value && (
-                                    <div
-                                        className="
-                                        absolute
-                                        top-0
-                                        left-0
-                                        w-full
-                                        h-full
-                                        rounded-lg
-                                        overflow-x-auto
-                                    "
-                                    >
-                                        <Image
-                                            alt="Uploaded image"
-                                            fill
-                                            style={{objectFit: 'cover'}}
-                                            src={value}
-                                        />
-                                    </div>
-                                )
-                            }
+                            {value && (
+                                <div className="
+                                            absolute inset-0 w-full h-full">
+                                    <Image
+                                        fill
+                                        style={{ objectFit: 'cover' }}
+                                        src={value}
+                                        alt="House"
+                                    />
+                                </div>
+                            )}
                         </div>
                     )
-                )
-            }}
-        </CldUploadWidget>
+                }}
+            </CldUploadWidget>
     );
 };
