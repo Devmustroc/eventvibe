@@ -36,13 +36,12 @@ const Home = async ({
                 />
                 <div
                     className="
-                                    pt-[50px]
                                     pb-[100px]
                     "
                 >
                     <div
                         className="
-                                   pb-[50px]
+                        pb[80px]
                                   "
                     >
                         <Categories/>
@@ -59,13 +58,12 @@ const Home = async ({
             />
             <div
                 className="
-                                    pt-[50px]
                                     pb-[100px]
             "
             >
                 <div
                     className="
-                                   pb-[50px]
+                                   pb-[80px]
                                   "
                 >
                     <Categories/>

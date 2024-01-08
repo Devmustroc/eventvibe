@@ -43,6 +43,7 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
                         flex
                         justify-center
                         items-center
+                        p-[50px]
                     "
 
             >
@@ -68,7 +69,7 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
                     >
                         <div>
                             <Image
-                                src={`/icons/${categoryValue}.png`}
+                                src={`/icons/${categoryValue}.jpg`}
                                 alt="hero"
                                 width={500}
                                 height={500}
