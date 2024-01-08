@@ -6,13 +6,11 @@ import {EventListCard} from "@/app/events/EventListCard";
 
 
 
-export const revalidate = 0
 
 
 const EventPage = async () => {
     const currentUser = await getCurrentUser();
     const events = await getAllEvents();
-
 
 
     return (

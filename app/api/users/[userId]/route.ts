@@ -16,7 +16,9 @@ export async function PUT(
         email,
         name,
         age,
-        image
+        image,
+        firstName,
+        lastName,
     } = body;
 
     if (!currentUser || currentUser.id !== params.userId) {
@@ -33,6 +35,31 @@ export async function PUT(
                 name,
                 age: parseInt(age, 10),
                 image,
+                firstName,
+                lastName,
+            },
+        });
+
+        return NextResponse.json(user);
+    } catch (e) {
+        return NextResponse.error();
+    }
+}
+
+export async function DELETE(
+    request: Request,
+    {params}: { params: IParams },
+) {
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser || currentUser.id !== params.userId) {
+        return NextResponse.error();
+    }
+
+    try {
+        const user = await prisma.user.delete({
+            where: {
+                id: currentUser.id,
             },
         });
 

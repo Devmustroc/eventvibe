@@ -1,5 +1,4 @@
 import prisma from "@/app/libs/prismadb";
-import {redis} from "@/lib/redis";
 
 interface IParams {
     listingId?: string;
@@ -13,12 +12,6 @@ export default async function getReservation(params: IParams) {
 
         const query: any = {};
 
-        const cachedReservations = await redis.get('reservations');
-
-        if (cachedReservations) {
-            return JSON.parse(cachedReservations);
-        }
-
         if (listingId) {
             query.listingId = listingId;
         }
@@ -30,6 +23,8 @@ export default async function getReservation(params: IParams) {
         if (authorId) {
             query.listing = { userId: authorId };
         }
+
+
 
         const reservations = await prisma?.reservation.findMany({
             where: query,
@@ -54,8 +49,6 @@ export default async function getReservation(params: IParams) {
                 },
             })
         );
-
-        await redis.set('reservations', JSON.stringify(reservationCached), 'EX', 60 * 60 * 24);
 
         return reservationCached;
     } catch (e: any) {

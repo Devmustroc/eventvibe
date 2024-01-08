@@ -4,6 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 import {redis} from "@/lib/redis";
 
+
 interface IParams {
     listingId?: string;
 }
@@ -13,7 +14,6 @@ export async function GET(
     { params }: { params: IParams }
 ) {
     const currentUser = await getCurrentUser();
-
 
     if (!currentUser) {
         return NextResponse.error();
@@ -25,10 +25,10 @@ export async function GET(
         throw new Error('Invalid ID');
     }
 
-    const cachedListing = await redis.get('listing');
+    const cachedEvent = await redis.get(`listing:${listingId}`);
 
-    if (cachedListing) {
-        return NextResponse.json(JSON.parse(cachedListing));
+    if (cachedEvent) {
+        return NextResponse.json(JSON.parse(cachedEvent));
     }
 
     const listing = await prisma.listing.findUnique({
@@ -37,7 +37,7 @@ export async function GET(
         }
     });
 
-    await redis.set('listing', JSON.stringify(listing), 'EX', 60 * 60 * 24);
+    await redis.set(`listing:${listingId}`, JSON.stringify(listing));
 
     return NextResponse.json(listing);
 }
@@ -72,6 +72,8 @@ export async function DELETE(
             userId: currentUser.id
         }
     });
+
+    await redis.del(`listing:${listingId}`);
 
     return NextResponse.json(listing);
 }
@@ -116,7 +118,6 @@ export async function PUT(
     const listing = await prisma.listing.update({
         where: {
             id: listingId,
-            userId: currentUser.id
         },
         data: {
             title,

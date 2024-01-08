@@ -5,7 +5,7 @@ export const config = {
         '/vibes',
         "/reservations",
         "/events",
+        "/events/[listingId]",
         '/favorites',
-        '/myevent',
     ]
 }

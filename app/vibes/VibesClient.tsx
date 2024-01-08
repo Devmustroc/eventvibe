@@ -9,6 +9,7 @@ import {useRouter} from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {EventCard} from "@/app/components/events/EventCard";
+import {NothingPage} from "@/app/components/NothingPage";
 
 
 
@@ -42,6 +43,36 @@ const VibesClient: React.FC<VibesClientProps> = ({
                 setDeletingId('');
             })
     }, [router]);
+
+    if (reservations.length === 0) {
+        return (
+            <div
+                className="
+                    flex
+                    justify-center
+                    items-center
+                "
+            >
+                <div
+                    className="
+                        grid
+                        grid-cols-1
+                        gap-4
+                        border-b-[1px]
+                        rounded-b-3xl
+                        shadow-blue-500
+                    "
+                >
+                    <NothingPage
+                        title="No vibes"
+                        subtitle='Please add vibes.'
+                    />
+                </div>
+            </div>
+        )
+    }
+
+
     return (
         <Container>
             <Heading

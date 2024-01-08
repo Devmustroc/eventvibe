@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
+import {redis} from "@/lib/redis";
 
 
 interface IParams {
@@ -24,8 +25,9 @@ export async function POST(
     let favoriteIds = [...(currentUser?.favoriteIds || [])];
 
 
-    // @ts-ignore
     favoriteIds.push(organizerId)
+
+
 
     const user = await prisma.user.update({
         where: {
@@ -36,6 +38,7 @@ export async function POST(
         },
     });
 
+    await redis.set(`favorite:${organizerId}`, JSON.stringify(user));
     return NextResponse.json(user);
 }
 
@@ -67,6 +70,8 @@ export async function DELETE(
             favoriteIds,
         },
     });
+
+    await redis.del(`favorite:${organizerId}`);
 
     return NextResponse.json(user);
 }

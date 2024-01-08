@@ -1,15 +1,8 @@
-import {redis} from "@/lib/redis";
 import prisma from "@/app/libs/prismadb";
+
 
 export async function getAllEvents() {
     try {
-
-        const cachedEvents = await redis.get('events');
-
-        if (cachedEvents) {
-            return JSON.parse(cachedEvents);
-        }
-
 
         const events = await prisma.listing.findMany({
             where: {
@@ -43,7 +36,6 @@ export async function getAllEvents() {
             createdAt: event.createdAt.toISOString(),
         }));
 
-        await redis.set('events', JSON.stringify(safeListings), 'EX', 60 * 60 * 24);
 
         return safeListings;
     }

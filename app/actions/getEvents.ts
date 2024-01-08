@@ -1,5 +1,4 @@
 import prisma from "@/app/libs/prismadb";
-import {redis} from "@/lib/redis";
 
 export interface IEventParams {
     userId?: string;
@@ -25,11 +24,6 @@ export async function getEvents(params: IEventParams) {
 
         let query: any = {};
 
-        const cachedEvents = await redis.get('events');
-
-        if (cachedEvents) {
-            return JSON.parse(cachedEvents);
-        }
 
         if (userId) {
             query.userId = userId;
@@ -99,7 +93,9 @@ export async function getEvents(params: IEventParams) {
             endDate: event.endDate.toISOString(),
         }));
 
-        await redis.set('events', JSON.stringify(eventsForCache), 'EX', 60 * 60 * 24);
+        return eventsForCache;
+
+
     } catch (error: any) {
         throw new Error(error);
     }

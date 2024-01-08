@@ -104,7 +104,8 @@ const EventClient: React.FC<EventClientProps> = ({
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [currentUser, dateRange, event.id, numGuests, router, totalPrice, loginModal])
+
 
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {

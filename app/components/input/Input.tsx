@@ -7,7 +7,7 @@ import React from "react";
 interface InputProps {
     id: string,
     label: string,
-    value?: string | number | Date,
+    value?: string | number | Date  | null,
     type?: string,
     disabled?: boolean,
     formatPrice?: boolean,
@@ -58,14 +58,14 @@ const Input: React.FC<InputProps> = ({
                     pl-5
                     rounded-md
                     border-[1px]
-                    border-brand_light
+                    border-slate-400
                     focus:outline-none
-                    focus:border-brand_primary
+                    focus:border-brand_secondary
                     transition
                     disabled:opacity-50
                     disabled:cursor-not-allowed
                     ${formatPrice ? 'pl-9' : ''}
-                    ${errors && errors[id] ? 'border-red-600 focus:border-red-600' : 'border-brand-secondary focus:border-brand_primary'}
+                    ${errors && errors[id] ? 'border-red-600 focus:border-red-600' : 'border-brand-secondary focus:border-brand_secondary'}
                     `
             }
                 {...register && register(id, {required: true})}
@@ -87,7 +87,7 @@ const Input: React.FC<InputProps> = ({
                     peer-placeholder-shown:translate-y-0
                     peer-focus:-translate-y-6
                     peer-focus:scale-75
-                     ${errors && errors[id] ? 'border-red-600 focus:border-red-600' : 'border-brand-secondary focus:border-brand_primary'}
+                     ${errors && errors[id] ? 'border-red-600 focus:border-red-600' : 'border-brand-secondary focus:border-brand_secondary'}
                 `}
             >
                 {label}

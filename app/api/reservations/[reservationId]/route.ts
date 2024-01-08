@@ -22,20 +22,36 @@ export async function DELETE(
     if (!reservationId) {
         throw new Error('Invalid ID');
     }
-    const reservation = await prisma.reservation.deleteMany({
+
+    const reservation = await prisma.reservation.delete({
         where: {
             id: reservationId,
-            OR: [
-                {
-                    userId: currentUser.id
-                },
-                {
-                    listing: {
-                        userId: currentUser.id
-                    }
-                }
-            ]
-        }
+        },
+    });
+
+    return NextResponse.json(reservation);
+}
+
+export async function GET(
+    request: Request,
+    {params}: {params: IParams}
+) {
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser) {
+        return NextResponse.error();
+    }
+
+    const {reservationId} = params;
+
+    if (!reservationId) {
+        throw new Error('Invalid ID');
+    }
+
+    const reservation = await prisma.reservation.findUnique({
+        where: {
+            id: reservationId,
+        },
     });
 
     return NextResponse.json(reservation);

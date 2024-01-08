@@ -1,5 +1,6 @@
 import prisma from "@/app/libs/prismadb";
-import {redis} from "@/lib/redis";
+
+
 
 interface IParams {
     listingId?: string;
@@ -7,12 +8,6 @@ interface IParams {
 
 export async function getUsersForEvent(params: IParams) {
     try {
-
-        const cachedUsers = await redis.get('users');
-
-        if (cachedUsers) {
-            return JSON.parse(cachedUsers);
-        }
 
         const reservations = await prisma.reservation.findMany({
             where: {

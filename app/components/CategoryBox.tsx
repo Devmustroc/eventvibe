@@ -6,6 +6,7 @@ import React, {useCallback} from "react";
 import querystring from "query-string";
 
 
+
 interface CategoryBoxProps {
     label: string;
     icon: IconType;
@@ -48,11 +49,11 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
             onClick={handleClick}
             className={`
                 flex 
-                flex-col 
-                items-center 
+                flex-col
+                items-center
+                gap-2
                 justify-center 
                 rounded-xl
-                gap-2
                 px-5
                 py-4
                 border-b-2
@@ -69,8 +70,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
             `}
 
         >
-            <Icon size={selected ? 30 : 15}
-            />
+             <Icon
+                  size={30}
+             />
             <div
                 className="
                     text-sm

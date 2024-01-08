@@ -21,8 +21,142 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         const handleUpload = useCallback((result: any) => {
             onChange(result.info.secure_url);
         }, [onChange])
-        return (
 
+        if (avatar) {
+            return (
+                <CldUploadWidget
+                    onUpload={handleUpload}
+                    uploadPreset='ofmkag8f'
+                    options={{
+                        maxFiles: 1,
+                    }}
+                >
+                    {({ open }) => {
+                        return (
+                            {avatar} ? (
+                                <div
+                                    onClick={() => open?.()}
+                                    className="
+                                    relative
+                                    cursor-pointer
+                                    h-[150px]
+                                    w-[150px]
+                                    hover:opacity-80
+                                    transition
+                                    border-dashed
+                                    rounded-full
+                                    border-2
+                                    border-gray-300
+                                    flex
+                                    flex-col
+                                    justify-center
+                                    items-center
+                                    gap-4
+                                    text-brand_secondary
+                        "
+                                >
+                                    <TbPhotoPlus
+                                        size={40}
+                                        className="
+                                        hover:opacity-80
+                                        hover:translate-y-[-2px]
+                            "
+                                    />
+                                    <div
+                                        className="
+                                            text-sm
+                                            transition
+                                            hover:opacity-80
+                                        "
+                                    >
+                                        Upload
+                                    </div>
+                                    {
+                                        value && (
+                                            <div
+                                                className="
+                                                absolute
+                                                w-full
+                                                h-full
+                                                rounded-full
+                                         "
+                                            >
+                                                <Image
+                                                    alt="Uploaded image"
+                                                    objectFit={'cover'}
+                                                    fill
+                                                    src={value}
+                                                    className="rounded-full"
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            ): (
+                                <div
+                                    onClick={() => open?.()}
+                                    className="
+                                    relative
+                                    cursor-pointer
+                                    hover:opacity-80
+                                    transition
+                                    border-dashed
+                                    rounded-full
+                                    rouded-full
+                                    border-2
+                                    flex
+                                    flex-col
+                                    justify-center
+                                    items-center
+                        "
+                                >
+                                    <TbPhotoPlus
+                                        size={40}
+                                        className="
+                                            hover:opacity-80
+                                            hover:translate-y-[-2px]
+                                        "
+                                    />
+                                    <div
+                                        className="
+                                            text-sm
+                                            transition
+                                            hover:opacity-80
+                                        "
+                                    >
+                                        Click to upload
+                                    </div>
+                                    {
+                                        value && (
+                                            <div
+                                                className="
+                                                    absolute
+                                                    top-0
+                                                    left-0
+                                                    w-full
+                                                    h-full
+                                                    rounded-full
+                                                    overflow-x-auto
+                                                "
+                                            >
+                                                <Image
+                                                    alt="Uploaded image"
+                                                    fill
+                                                    style={{objectFit: 'cover'}}
+                                                    src={value}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            )
+                        )
+                    }}
+                </CldUploadWidget>
+            )
+        }
+
+        return (
         <CldUploadWidget
             onUpload={handleUpload}
             uploadPreset='ofmkag8f'

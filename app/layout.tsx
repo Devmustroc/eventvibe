@@ -30,6 +30,7 @@ export default async function RootLayout({
     const currentUser = await getCurrentUser();
 
 
+
     return (
     <html lang="en">
     <body className={font1.className}>
@@ -42,10 +43,19 @@ export default async function RootLayout({
         <RentModal/>
     </ClientOnly>
     <NavBar currentUser={currentUser}/>
-    <div>
+    <div
+        className="
+                pt-[100px]
+                "
+    >
         {children}
     </div>
-    <div>
+    <div
+        className="
+                bottom-0
+                mt-[100px]
+                "
+    >
         <hr
             className="
                 border-[1px]
@@ -53,7 +63,7 @@ export default async function RootLayout({
                 w-[100%]
                 my-[20px]
                 md:my-[20px]
-            "
+                "
         />
         <ClientOnly>
             <Footer/>

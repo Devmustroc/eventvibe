@@ -1,7 +1,7 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/app/libs/prismadb";
-import {redis} from "@/lib/redis";
+
 
 export async function getSession () {
     return await getServerSession(authOptions)
@@ -13,12 +13,6 @@ const getCurrentUser = async () => {
 
         if (!session?.user?.email) {
             return null;
-        }
-
-        const cachedUser = await redis.get(session.user.email);
-
-        if (cachedUser) {
-            return JSON.parse(cachedUser);
         }
 
         const currentUser = await prisma.user.findUnique({
@@ -43,7 +37,6 @@ const getCurrentUser = async () => {
             emailVerified: currentUser.emailVerified || null,
         };
 
-        await redis.set(session.user.email, JSON.stringify(safeUser), 'EX', 60 * 60 * 24);
 
         return safeUser;
     } catch (error: any) {

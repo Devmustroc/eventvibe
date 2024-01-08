@@ -8,7 +8,9 @@ export const FooterClient = () => {
         <footer className="
                 relative
                 bg-blueGray-200
-                pb-6 border-t-1"
+                pb-6 border-t-1
+                 bottom-0
+                "
         >
             <div className="
                         container

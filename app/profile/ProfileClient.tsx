@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import {ImageUpload} from "@/app/components/input/ImageUpload";
 
 interface ProfileClientProps {
-    currentUser: SafeUser,
+    currentUser: SafeUser | null,
 }
 
 const ProfileClient: React.FC<ProfileClientProps> = ({
@@ -34,6 +34,8 @@ const ProfileClient: React.FC<ProfileClientProps> = ({
             email: currentUser?.email,
             age: currentUser?.age,
             image: currentUser?.image,
+            firstName: currentUser?.firstName,
+            lastName: currentUser?.lastName,
         }
     })
 
@@ -67,225 +69,160 @@ const ProfileClient: React.FC<ProfileClientProps> = ({
             })
     };
 
+
     return (
-      <Container>
+        <Container
+            className="
+                pt-[100px]
+                pb-[100px]
+            "
+        >
             <div
                 className="
-                        pt-[140px]
-                        flex
-                        flex-col
-                        items-center
-                        justify-center
-                        w-full
-                        mb-12
-                "
-            >
-                <Heading
-                    title="Profile"
-                    subtitle="User Profile"
-                />
-                <div
-                    className="
-                    grid
-                    grid-cols-1
-                    md:grid-cols-2
-                    gap-4
-                    mt-4
+                    flex
+                    flex-col
+                    items-center
+                    justify-center
                     w-full
-                    px-4
-                    py-4
-                    bg-white
-                    rounded-lg
-                    shadow-[3px_3px_9px_#d9d9d9]
-                    pb-8
-                "
-                >
-                    <div
-                        className="
-                            flex
-                            flex-col
-                            items-center
-                            justify-center
-                            bg-white
-                            rounded-full
+                    pt-[50px]
+                    pb-[50px]
+                    "
+            >
+            <Heading
+                title="Profile"
+                subtitle="Update your profile"
+                center
+            />
+           <div
+                className="
+                      mt-10
+                      grid-cols-2
+                      gap-4
+                      grid
+                      rounded-lg
+                      px-[50px]
+                      pv-[50px]
+                      pb-[50px]
+                      xs:w-[90%]
+                      md:w-[50%]
+                      xl:w-[40%]
+                      2xl:w-[40%]
+                      border-2
+                      border-gray-200
+                      shadow-md
+                      "
+           >
+               <div
+                   className="
+                        col-span-2
+                        flex
+                        xs:flex-col
+                        flex-start
+                        mt-8
                         "
-                    >
-                        <div
+               >
+                   <div
+                       className="bg-white  rounded-lg  w-full h-full">
+                       <div
                             className="
-                                    relative
-                                    h-1/2
-                                    w-1/2
-                                    bg-brand_secondary
-                                    rounded-full
-                                "
-                        >
-                            <div
-                                className="
-                                        absolute
-                                        inset-0
-                                        flex
-                                        items-center
-                                        justify-center
-                                    "
-                            >
-                                <div
-                                    className="
-                                            w-full
-                                            h-full
-                                            rounded-full
-                                            overflow-hidden
-                                        "
-                                >
-                                    <ImageUpload
-                                        value={image}
-                                        onChange={(value) => setCustomValue('image', value)}
-                                        avatar
-                                    />
-                                </div>
+                                  flex
+                                  flex-row
+                                  items-stat
+                                  justify-start
+                                  rounded-full
+                                  p-5
+                                  text-center
+                                  gap-8
+                                  "
+                       >
+                           <ImageUpload
+                               value={image}
+                               onChange={(value: any) => setCustomValue('imageSrc', value)}
+                               avatar
+                           />
+                       </div>
+                       <div className="p-5">
+                           <a href="#">
+                               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                   <span>{currentUser?.firstName}</span> <span>{currentUser?.lastName}</span></h5>
+                           </a>
+                           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                {currentUser?.email}
+                           </p>
+                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                {currentUser?.age}
+                            </p>
+                       </div>
+                   </div>
+               </div>
+               <div
+                   className="
+                        grid
+                        col-span-2
+                        gap-4
+                        "
+               >
+                   <form>
+                       <div className="grid gap-6 mb-6 md:grid-cols-1">
+                           <div>
+                               <Input
+                                   label="First name"
+                                   id="firstName"
+                                   type="text"
+                                   register={register}
+                                   required
+                               />
+                           </div>
+                           <div>
+                               <Input
+                                   label="Last name"
+                                   id="lastName"
+                                   type="text"
+                                   value={currentUser?.lastName}
+                                   register={register}
+                                   required
+                               />
+                           </div>
+                           <div>
+                               <Input
+                                   label="Username"
+                                   id="username"
+                                   type="text"
+                                   value={currentUser?.name}
+                                   register={register}
+                                   required
+                               />
                             </div>
-                        </div>
-                        <div
-                            className="
-                            flex
-                            flex-col
-                            items-start
-                            justify-start
-                            bg-white
-                            rounded-lg
-                            mb-3
-                        "
-                        >
-                            <p
-                                className="
-                            mt-3
-                            text-md
-                            font-medium
-                            text-gray-800
-                        "
-                            >
-                                Name : <span
-                                className="
-                                font-medium
-                                text-xl
-                                text-brand_black
-                        "
+                           <div>
+                                <Input
+                                    label="Email"
+                                    id="email"
+                                    type="email"
+                                    value={currentUser?.email}
+                                    register={register}
+                                    required
+                                />
+                           </div>
+                           <div>
+                                <Input
+                                    label="Age"
+                                    id="age"
+                                    type="number"
+                                    value={currentUser?.age}
+                                    register={register}
+                                    required
+                                />
+                            </div>
+                            </div>
 
-                            >{currentUser?.name}</span>
-                            </p>
-                            <p
-                                className="
-                                mt-3
-                                text-md
-                                font-medium
-                                text-gray-800
-                        "
-                            >
-                                Email : <span
-                                className="
-                                font-medium
-                                text-xl
-                                text-black
-                        "
-                            >{currentUser?.email}</span>
-                            </p>
-                            <p
-                                className="
-                                mt-3
-                                text-md
-                                font-medium
-                                text-gray-800
-                        "
-                            >
-                                Age : <span
-                                className="
-                                font-medium
-                                text-xl
-                                text-brand_primary
-                        "
-                            >{currentUser?.age}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        className="
-                        flex
-                        flex-col
-                        bg-white
-                        gap-4
-                    "
-                    >
-                        <h2
-                            className="
-                            text-xl
-                            font-medium
-                            text-gray-800
-                        "
-
-                        >
-                            Update Profile information
-                        </h2>
-                        <Input
-                            id="name"
-                            label="Name"
-                            type="text"
-                            disabled={isLoading}
-                            register={register}
-                            errors={errors}
-                        />
-                        <Input
-                            id="email"
-                            label="Email"
-                            type="email"
-                            disabled={isLoading}
-                            register={register}
-                            errors={errors}
-                        />
-                        <Input
-                            id="age"
-                            label="Age"
-                            type="number"
-                            disabled={isLoading}
-                            register={register}
-                            errors={errors}
-                        />
-                        <div
-                            className="
-                        flex
-                        flex-col
-                        items-center
-                        justify-center
-                        bg-white
-                        gap-4
-                        px-4
-                        py-4
-                    "
-
-                        >
-                            <button
-                                onClick={handleSubmit(onSubmit)}
-                                disabled={isLoading}
-                                className={`
-                                relative
-                                disabled:opacity-50
-                                disabled:cursor-not-allowed
-                                rounded-full
-                                hover:opacity-80
-                                border-brand_light
-                                hover:bg-brand_light
-                                shadow-[3px_3px_9px_#bdcbc4]
-                                py-2
-                                px-6
-                                text-md
-                                font-semibold
-                                border-2
-                    `}
-                            >
-                                Update Profile
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
+                       <button
+                           onClick={handleSubmit(onSubmit)}
+                           type="submit"
+                           className="text-white bg-brand_secondary hover:bg-brand_primary hover:text-brand_secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-md">Submit
+                       </button>
+                   </form>
+               </div>
+           </div>
             </div>
       </Container>
     )

@@ -8,11 +8,11 @@ interface AvatarMatchListProps {
 
 
 export const AvatarMatchList: React.FC<AvatarMatchListProps> = ({
-    userMatch
-}) => {
+                                                                    userMatch
+                                                                }) => {
     return (
         <div className="flex -space-x-4 rtl:space-x-reverse">
-            {userMatch?.map((user) => (
+            {Array.isArray(userMatch) && userMatch.map((user) => (
                 <img
                     key={user.id}
                     className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"

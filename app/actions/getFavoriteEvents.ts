@@ -1,17 +1,11 @@
 import prisma from "@/app/libs/prismadb";
-
 import getCurrentUser from "./getCurrentUser";
-import {redis} from "@/lib/redis";
+
+
 
 export default async function getFavoriteListings() {
     try {
         const currentUser = await getCurrentUser();
-
-        const cachedFavorites =await redis.get('favorites');
-
-        if (cachedFavorites) {
-            return JSON.parse(cachedFavorites);
-        }
 
         if (!currentUser) {
             return [];
@@ -32,7 +26,6 @@ export default async function getFavoriteListings() {
             endDate: favorite.endDate.toISOString(),
         }));
 
-        await redis.set('favorites', JSON.stringify(safeFavorites), 'EX', 60 * 60 * 24);
 
         return safeFavorites;
     } catch (error: any) {

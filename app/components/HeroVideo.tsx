@@ -1,9 +1,13 @@
-'use client';
+"use client";
 
 import React, {useCallback} from 'react';
 import {SafeUser} from "@/app/types";
 import useRentModal from "@/app/hooks/useRentModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import {useSearchParams} from "next/navigation";
+import {Wrapper} from "@/app/components/wrapper";
+import Image from "next/image";
+import {categories} from "@/app/components/navbar/Categories";
 
 
 interface HeroVideoProps {
@@ -16,6 +20,13 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
 
     const rentModal = useRentModal();
     const registerModal = useRegisterModal();
+    const category = useSearchParams();
+
+    const categoryValue = category?.get('category');
+
+    const categoryItem = categories.find((category) => category.label === categoryValue);
+
+
 
     const onRent = useCallback(() => {
         if (!currentUser) {
@@ -25,12 +36,89 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
         }
     }, [currentUser, registerModal, rentModal]);
 
+    if (categoryValue !== null) {
+        return (
+            <div
+                className="
+                        flex
+                        justify-center
+                        items-center
+                    "
+
+            >
+            <div
+                className="
+                        grid
+                        grid-cols-1
+                        gap-4
+                        border-b-[1px]
+                        rounded-b-3xl
+                        shadow-blue-500
+                "
+            >
+                <Wrapper>
+                    <div
+                        className="
+                        grid
+                        grid-cols-1
+                        gap-[50px]
+                        items-center
+                        md:grid-cols-2
+                    "
+                    >
+                        <div>
+                            <Image
+                                src={`/icons/${categoryValue}.png`}
+                                alt="hero"
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                        <div
+                            className="
+                            flex
+                            flex-col
+                            justify-start
+                            items-star
+                            gap-4
+                            py-4
+                            px-4
+                        "
+                        >
+                            <h1
+                                className="
+                                h1-bold
+                            "
+                            >
+                                {categoryValue}
+                            </h1>
+                            <p
+                                className="
+                                h2-regular
+                                md:p-regular-24
+                                text-xl
+                                sm:text-lg
+                                md:text-xl
+                                text-start
+                                text-slate-600
+                            "
+                            >
+                                {categoryItem?.subtitle}
+                            </p>
+                        </div>
+                    </div>
+                </Wrapper>
+            </div>
+            </div>
+        )
+    }
+
     return (
         <div className="
                 pt-20 sm:pt-32 md:pt-0
                 relative
                 w-full
-                h-[50vh]
+                h-[70vh]
                 overflow-hidden
                 mb-[20px]
                 border-b-[1px]
@@ -39,24 +127,25 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
             ">
             <video autoPlay muted loop className="absolute top-0 left-0 w-full h-full object-cover">
                 <source src="/video/backgroundModal.mp4" type="video/mp4"/>
-                Your browser does not support the video tag.
             </video>
             <div className="
                         absolute
                         flex
                         flex-col
-                        justify-start
-                        items-start
-                        bottom-4
-                        left-4
+                        justify-center
+                        items-cente
+                        inset-0
                         transform
                         text-center
                         text-white
                     ">
                 <h1
                     className="
-                       h1-bold
-                        "
+                       font-display
+                       font-bold
+                        text-3xl
+                        sm:text-6xl
+                     "
                 >
                     Celebrate your special day with us
                 </h1>

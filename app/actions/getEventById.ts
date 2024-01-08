@@ -1,5 +1,5 @@
 import prisma from "@/app/libs/prismadb";
-import {redis} from "@/lib/redis";
+
 
 interface IParams {
     listingId?: string;
@@ -11,11 +11,6 @@ export default async function getListingById(
     try {
         const { listingId } = params;
 
-        const cachedEvent = await redis.get(`listing:${listingId}`);
-
-        if (cachedEvent) {
-            return JSON.parse(cachedEvent);
-        }
 
         const listing = await prisma.listing.findUnique({
             where: {
@@ -42,7 +37,6 @@ export default async function getListingById(
             }
         };
 
-        await redis.set(`listing:${listingId}`, JSON.stringify(event), 'EX', 60 * 60 * 24);
 
         return event;
     } catch (error: any) {

@@ -2,7 +2,7 @@
 
 
 import {SafeEvent, SafeReservation, SafeUser} from "@/app/types";
-import React, {useCallback, useMemo} from "react";
+import React, {useCallback,  useMemo} from "react";
 import {useRouter} from "next/navigation";
 import useCountries from "@/app/hooks/useCountries";
 import {format} from "date-fns";
@@ -37,8 +37,6 @@ export const EventCard: React.FC<EventCardProps> = ({
 
 
     const location = getByValue(event.locationValue);
-
-
 
     const handleCancel = useCallback(async (e: React.MouseEvent<HTMLButtonElement>) => {
             e.stopPropagation();
@@ -76,6 +74,7 @@ export const EventCard: React.FC<EventCardProps> = ({
         event.endDate
     ]);
 
+
     return (
         <div
             className="
@@ -91,7 +90,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             "
         >
             <div
-
+                onClick={() => router.push(`/events/${event.id}`)}
                 className="
                     flex
                     flex-col
@@ -102,7 +101,6 @@ export const EventCard: React.FC<EventCardProps> = ({
                 "
             >
                 <div
-                    onClick={() => router.push(`/events/${event.id}`)}
                     className="
                         aspect-square
                         w-full

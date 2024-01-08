@@ -3,6 +3,8 @@ import ClientOnly from "@/app/components/ClientOnly";
 import {EmptyState} from "@/app/components/EmptyState";
 import getReservation from "@/app/actions/getReservation";
 import VibesClient from "@/app/vibes/VibesClient";
+import React from "react";
+import {NothingPage} from "@/app/components/NothingPage";
 
 
 export const revalidate = 0
@@ -18,6 +20,10 @@ const VibePage = async () => {
                     title="No vibes, User Unauthenticated"
                     subtitle='Please login to view your vibes.'
                 />
+                <NothingPage
+                    title="No vibes, User Unauthenticated"
+                    subtitle='Please login to view your vibes.'
+                />
             </ClientOnly>
         )
     }
@@ -27,9 +33,9 @@ const VibePage = async () => {
     if (!reservations) {
         return (
             <ClientOnly>
-                <EmptyState
-                    title="No vibes, Founded"
-                    subtitle='Create a vibe to get started.'
+                <NothingPage
+                    title="No vibes"
+                    subtitle='Please add vibes.'
                 />
             </ClientOnly>
         )

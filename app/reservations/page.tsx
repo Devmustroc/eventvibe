@@ -4,10 +4,14 @@ import {EmptyState} from "@/app/components/EmptyState";
 import getReservation from "@/app/actions/getReservation";
 import {ReservationClient} from "@/app/reservations/ReservationClient";
 
+
+
 export const revalidate = 0
 
 const reservationsPage = async () => {
     const currentUser = await getCurrentUser();
+
+
 
     if (!currentUser) {
         return (
@@ -19,10 +23,10 @@ const reservationsPage = async () => {
             </ClientOnly>
         )
     }
-
     const reservation = await getReservation({
         authorId: currentUser.id
     })
+
 
     if (!reservation) {
         return (
