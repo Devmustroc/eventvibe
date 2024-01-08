@@ -20,10 +20,8 @@ export const CardEvent: React.FC<CardEventProps> = ({
     const formattedDate2 = format(new Date(events.endDate), 'PP');
 
     return (
-
-
         <div
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img className="rounded-lg pb-8" src={events.imageSrc} alt={events.title}/>
             </a>
@@ -55,6 +53,5 @@ export const CardEvent: React.FC<CardEventProps> = ({
                 </div>
             </div>
         </div>
-
     );
 };
