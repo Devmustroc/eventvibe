@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Event Vibe
 
-## Getting Started
+This is a web application built with [Next.js](https://nextjs.org/), a popular React framework. The application is written in TypeScript and JavaScript, and uses npm for package management.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you begin, ensure you have met the following requirements:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- You have installed the latest version of npm and Node.js
+- You have a Linux machine. This project was developed on a Linux OS and may behave differently on Windows or MacOS.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installing Event Vibe
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To install this project, follow these steps:
 
-## Learn More
+1. Clone the repository: `git clone https://github.com/Devmustroc/eventvibe.git`
+2. Navigate to the project directory: `cd EventVibe`
+3. Install the dependencies: `npm install`
 
-To learn more about Next.js, take a look at the following resources:
+## Using Event Vibe
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To use EventVibe, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Start the development server: `npm run dev`
+2. Open your web browser and navigate to `http://localhost:3000`
 
-## Deploy on Vercel
+## Contributing to EventVibe
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To contribute to EventVibe, follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin EventVibe`
+5. Create the pull request.
+
+## Contact
+
+If you want to contact me you can reach me at `Elmustapha.abourar@outlook.com`.
