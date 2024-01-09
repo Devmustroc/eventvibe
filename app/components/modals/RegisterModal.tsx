@@ -87,7 +87,7 @@ const RegisterModal = () => {
             />
             <Input
                 id="password"
-                label="Name"
+                label="Password"
                 type="password"
                 disabled={isLoading}
                 register={register}
