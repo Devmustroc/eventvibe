@@ -1,4 +1,3 @@
-/*
 import Redis from "ioredis";
 
 const getRedisUrl = () => {
@@ -9,4 +8,5 @@ const getRedisUrl = () => {
   throw new Error("REDIS_URL is not defined");
 };
 
-export const redis = new Redis(getRedisUrl());*/
+export const redis = new Redis(getRedisUrl());
+

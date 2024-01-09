@@ -7,7 +7,7 @@ import React from "react";
 import ToasterProvider from "@/app/providers/ToasterProvider";
 import LoginModal from "@/app/components/modals/LoginModal";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import {RentModal} from "@/app/components/modals/RentModal";
+import {BookModal} from "@/app/components/modals/bookModal";
 import ClientOnly from "@/app/components/ClientOnly";
 import {SearchModal} from "@/app/components/modals/SearchModal";
 import {Footer} from "@/app/components/Footer/Footer";
@@ -32,44 +32,44 @@ export default async function RootLayout({
 
 
     return (
-    <html lang="en">
-    <body className={font1.className}>
-    <ClientOnly>
-        <ToasterProvider/>
-        <LoginModal/>
-        <RegisterModal/>
-        <UpdateModal />
-        <SearchModal/>
-        <RentModal/>
-    </ClientOnly>
-    <NavBar currentUser={currentUser}/>
-    <div
-        className="
+        <html lang="en">
+        <body className={font1.className}>
+        <ClientOnly>
+            <ToasterProvider/>
+            <LoginModal/>
+            <RegisterModal/>
+            <UpdateModal/>
+            <SearchModal/>
+            <BookModal/>
+        </ClientOnly>
+        <NavBar currentUser={currentUser}/>
+        <div
+            className="
                 pt-[100px]
                 "
-    >
-        {children}
-    </div>
-    <div
-        className="
+        >
+            {children}
+        </div>
+        <div
+            className="
                 bottom-0
                 mt-[100px]
                 "
-    >
-        <hr
-            className="
+        >
+            <hr
+                className="
                 border-[1px]
                 border-[#e4e4e4]
                 w-[100%]
                 my-[20px]
                 md:my-[20px]
                 "
-        />
-        <ClientOnly>
-            <Footer/>
-        </ClientOnly>
-    </div>
-    </body>
-    </html>
+            />
+            <ClientOnly>
+                <Footer/>
+            </ClientOnly>
+        </div>
+        </body>
+        </html>
     )
 }
