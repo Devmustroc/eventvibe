@@ -65,7 +65,7 @@ export const Counter: React.FC<CounterProps> = ({
                         w-10
                         h-10
                         rounded-full
-                        bg-gray-100
+                        bg-white
                         border-[1px]
                         border-brand_secondary
                         flex
@@ -74,7 +74,8 @@ export const Counter: React.FC<CounterProps> = ({
                         text-brand_secondary
                         cursor-pointer
                         hover:opacity-80
-                        hover:bg-brand_secondary/60
+                        hover:bg-brand_secondary
+                        hover:text-brand_primary
                         transition
                      "
                 >
@@ -101,6 +102,7 @@ export const Counter: React.FC<CounterProps> = ({
                             outline-none
                             text-brand_secondary
                             font-bold
+
                         "
                     />
                 </div>
@@ -110,16 +112,17 @@ export const Counter: React.FC<CounterProps> = ({
                         w-10
                         h-10
                         rounded-full
-                        bg-gray-100
+                        bg-white
                         border-[1px]
                         border-brand_secondary
                         flex
                         items-center
                         justify-center
-                        text-brand_secondary
+                        text-brand_gray
                         cursor-pointer
                         hover:opacity-80
-                        hover:bg-brand_secondary/60
+                        hover:bg-brand_secondary
+                        hover:text-brand_primary
                         transition
                      "
                 >

@@ -51,6 +51,7 @@ const Input: React.FC<InputProps> = ({
                 id={id}
                 type={type}
                 disabled={disabled}
+                pattern={type === 'date'  ? "dd/mm/yyyy" : undefined}
                 className={`
                     w-full
                     peer

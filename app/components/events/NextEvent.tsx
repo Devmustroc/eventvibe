@@ -28,7 +28,7 @@ export const NextEvent: React.FC<NextEventProps> = ({
                                   "
             >
                 <Image
-                    src="/icons/agenda.png"
+                    src="/images/logo-min.png"
                     alt="logo"
                     width={50}
                     height={50}
