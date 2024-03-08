@@ -5,7 +5,7 @@ services:
     container_name: colloc-postgres
     environment:
       POSTGRES_DB: collochub
-      POSTGRES_USER: devmustroc
-      POSTGRES_PASSWORD: '@Isaac2021'
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD: ''
     ports:
       - "5432:5432"
