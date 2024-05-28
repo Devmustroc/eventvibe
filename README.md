@@ -1,4 +1,4 @@
-[# Event Vibe
+# Event Vibe
 Welcome to EventVibe, the ultimate web app designed to revolutionize how you discover and share events across the globe. Whether you're an event organizer or an enthusiast looking for the next exciting activity, EventShare provides a seamless platform to connect with a vibrant community.
 This is a web application built with [Next.js](https://nextjs.org/), a popular React framework. The application is written in TypeScript and JavaScript, and uses npm for package management.
 
