@@ -22,16 +22,9 @@ export const HeartButton: React.FC<HeartButtonProps> = ({
     });
     return (
         <div
+            role="button"
             onClick={toggleFavorite}
-            className="
-                relative
-                cursor-pointer
-                flex
-                items-center
-                gap-1
-                text-gray-400
-                group-hover:text-gray-600
-            "
+            className={`relative cursor-pointer flex items-center gap-1 text-gray-400 group-hover:text-gray-600 ${hasFavorite ? 'fill-red-600' : ''}`}
         >
             <RiHeart2Line
                 size={28}

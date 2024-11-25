@@ -29,6 +29,7 @@ const Calendar: React.FC<CalendarProps> = ({
 
     return (
         <div
+            role="application"
             className="
                 w-full
                 bg-white
