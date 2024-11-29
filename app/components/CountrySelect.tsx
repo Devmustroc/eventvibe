@@ -1,6 +1,7 @@
 import Select from "react-select";
 import useCountries from "@/app/hooks/useCountries";
 import React from "react";
+import {CountrySelectType} from "@/app/types";
 
 
 export type CountrySelectValue = {
@@ -34,7 +35,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
                 isClearable
                 options={getAllCountries()}
                 value={value}
-                onChange={(value) => onChange(value as CountrySelectValue)}
+                onChange={(value: CountrySelectType) => onChange(value as CountrySelectValue)}
                 formatOptionLabel={(option: any) => (
                     <div
                         className="

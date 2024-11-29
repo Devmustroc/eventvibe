@@ -19,6 +19,14 @@ export type SafeReservation = Omit<
     listing: SafeEvent;
 };
 
+export type CountrySelectType = {
+    flag: String;
+    label: String;
+    latlng: number[];
+    region: String;
+    value: String;
+}
+
 
 
 export type SafeUser = Omit<
