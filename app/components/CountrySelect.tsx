@@ -35,7 +35,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
                 isClearable
                 options={getAllCountries()}
                 value={value}
-                onChange={(value: CountrySelectType) => onChange(value as CountrySelectValue)}
+                onChange={(value: CountrySelectValue) => onChange(value as CountrySelectValue)}
                 formatOptionLabel={(option: any) => (
                     <div
                         className="
