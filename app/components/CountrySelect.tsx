@@ -65,7 +65,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
                     input: () => 'text-lg font-bold',
                     option: () => 'text-lg font-sm',
                 "
-                theme={(theme) => (
+                theme={(theme: any) => (
                     {
                         ...theme,
                         borderRadius: 6,
