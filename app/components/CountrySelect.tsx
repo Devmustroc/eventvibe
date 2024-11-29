@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select, { Theme } from "react-select";
 import useCountries from "@/app/hooks/useCountries";
 import React from "react";
 import {CountrySelectType} from "@/app/types";
@@ -65,17 +65,15 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
                     input: () => 'text-lg font-bold',
                     option: () => 'text-lg font-sm',
                 "
-                theme={(theme: any) => (
-                    {
-                        ...theme,
-                        borderRadius: 6,
-                        colors: {
-                            ...theme.colors,
-                            primary25: '#159A9C',
-                            primary: 'black',
-                        }
+                theme={(theme: Theme) => ({
+                    ...theme,
+                    borderRadius: 6,
+                    colors: {
+                        ...theme.colors,
+                        primary25: '#159A9C',
+                        primary: 'black',
                     }
-                )}
+                })}
             />
         </div>
     );
