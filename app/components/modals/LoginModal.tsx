@@ -63,6 +63,7 @@ const LoginModal = () => {
 
     const bodyContent = (
         <div
+            data-cy="login-modal"
             className="
                 flex
                 flex-col
@@ -75,6 +76,7 @@ const LoginModal = () => {
                 center
             />
             <Input
+                data-cy="email-input"
                 id="email"
                 label="email"
                 type="email"
@@ -84,6 +86,7 @@ const LoginModal = () => {
                 required
             />
             <Input
+                data-cy="password-input"
                 id="password"
                 label="Password"
                 type="password"

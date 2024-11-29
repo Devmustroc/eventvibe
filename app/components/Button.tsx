@@ -27,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
         <>
             {rounded ? (
                 <button
+                    data-cy="login-button"
                     onClick={onClick}
                     disabled={disabled}
                     className={`
@@ -56,6 +57,7 @@ const Button: React.FC<ButtonProps> = ({
                 </button>
             ) : (
                 <button
+                    data-cy="submit-login-button"
                     onClick={onClick}
                     disabled={disabled}
                     className={`
