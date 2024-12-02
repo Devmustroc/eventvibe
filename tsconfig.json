@@ -7,7 +7,7 @@
       "esnext",
       "es5"
     ],
-    "types": ["cypress", "node", "@testing-library/cypress"],
+    "types": ["cypress", "node", "@testing-library/cypress", "jest"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

@@ -1,6 +1,7 @@
 import ClientOnly from "@/app/components/ClientOnly";
 import {EmptyState} from "@/app/components/EmptyState";
-import {getEvents, IEventParams} from "@/app/actions/getEvents";
+import getEvents from "@/app/actions/getEvents";
+import type { IParams as IEventParams } from "@/app/actions/getEvents";
 import {EventCard} from "@/app/components/events/EventCard";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import React from "react";

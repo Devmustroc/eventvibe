@@ -1,52 +1,48 @@
-import { getEvents } from '@/app/actions/getEvents'
-import prisma from '@/app/libs/prismadb'
+import getEvents from '@/app/actions/getEvents';
+import prisma from '@/app/libs/prismadb';
 
 jest.mock('@/app/libs/prismadb', () => ({
-    listing: {
+    event: {
         findMany: jest.fn()
     }
-}))
+}));
 
 describe('getEvents', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
     it('returns events with correct filters', async () => {
-        const mockEvents = [
-            {
-                id: '1',
-                title: 'Test Event',
-                description: 'Test Description',
-                imageSrc: '/test-image.jpg',
-                createdAt: new Date().toISOString(),
-                category: 'test',
-                price: 100,
-                locationValue: 'FR',
-                userId: '1',
-                startDate: new Date().toISOString(),
-                endDate: new Date().toISOString(),
-                guestCount: 10,
-                remaingPlaces: 5,
-                address: 'Test Address',
-                zipcode: '12345',
-                city: 'Test City',
-                rating: 4.5
-            }
-        ];
-        (prisma.listing.findMany as jest.Mock).mockResolvedValue(mockEvents)
+        const mockEvents = [{
+            id: '1',
+            title: 'Test Event',
+            description: 'Test Description',
+            imageSrc: 'test.jpg',
+            createdAt: new Date('2023-01-01'),
+            category: 'music',
+            locationValue: 'FR',
+            price: 100,
+            organizerId: 'user1'
+        }];
+
+        (prisma.event.findMany as jest.Mock).mockResolvedValue(mockEvents);
 
         const result = await getEvents({
-            category: 'test',
-            city: 'Paris',
-            guestCount: 2
-        })
+            organizerId: 'user1',
+            category: 'music',
+            locationValue: 'FR'
+        });
 
-        expect(result).toEqual(mockEvents)
-        expect(prisma.listing.findMany).toHaveBeenCalledWith(
-            expect.objectContaining({
-                where: expect.objectContaining({
-                    category: 'test',
-                    city: 'Paris',
-                    guestCount: { gte: 2 }
-                })
-            })
-        )
-    })
-})
+        expect(result).toEqual(mockEvents);
+        expect(prisma.event.findMany).toHaveBeenCalledWith({
+            where: {
+                organizerId: 'user1',
+                category: 'music',
+                locationValue: 'FR'
+            },
+            orderBy: {
+                createdAt: 'desc'
+            }
+        });
+    });
+});
